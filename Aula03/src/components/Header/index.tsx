@@ -4,18 +4,23 @@ import { Center } from '@/components/ui/center';
 import { Text } from '@/components/ui/text';
 import { Pressable } from '@/components/ui/pressable';
 import { Icon } from '@/components/ui/icon';
+import { useRouter } from 'expo-router';
 import { Eye, EyeOff, Bell, CircleHelp } from 'lucide-react-native';
 
 type Props = { verSaldo: boolean; onToggle: () => void };
 
 export function Header({ verSaldo, onToggle }: Props) {
+  const router = useRouter();
+
   return (
     <VStack className="bg-[#820AD1] px-5 pt-[60px] pb-6">
       {/* Linha de cima: avatar + ícones */}
       <HStack className="justify-between items-center">
-        <Center className="w-12 h-12 rounded-full bg-white/20">
-          <Text className="text-white text-lg font-bold">F</Text>
-        </Center>
+        <Pressable onPress={() => router.push('/perfil')}>
+          <Center className="w-12 h-12 rounded-full bg-white/20">
+            <Text className="text-white text-lg font-bold">F</Text>
+          </Center>
+        </Pressable>
 
         <HStack className="gap-3">
           <Pressable onPress={onToggle}>

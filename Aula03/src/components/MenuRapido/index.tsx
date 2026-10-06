@@ -1,4 +1,5 @@
 import { ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
 import { VStack } from '@/components/ui/vstack';
 import { Center } from '@/components/ui/center';
 import { Text } from '@/components/ui/text';
@@ -7,15 +8,17 @@ import { Icon } from '@/components/ui/icon';
 import { QrCode, Receipt, Send, Landmark, Smartphone, HandCoins } from 'lucide-react-native';
 
 const itens = [
-  { nome: 'Pix', icone: QrCode },
-  { nome: 'Pagar', icone: Receipt },
-  { nome: 'Transferir', icone: Send },
-  { nome: 'Depositar', icone: Landmark },
-  { nome: 'Recarga', icone: Smartphone },
-  { nome: 'Cobrar', icone: HandCoins },
+  { nome: 'Pix', icone: QrCode, rota: '/pix' },
+  { nome: 'Pagar', icone: Receipt, rota: '/pagar' },
+  { nome: 'Transferir', icone: Send, rota: '/transferir' },
+  { nome: 'Depositar', icone: Landmark, rota: '/extrato' },
+  { nome: 'Recarga', icone: Smartphone, rota: '/pagar' },
+  { nome: 'Cobrar', icone: HandCoins, rota: '/pix' },
 ];
 
 export function MenuRapido() {
+  const router = useRouter();
+
   return (
     <ScrollView
       horizontal
@@ -24,7 +27,7 @@ export function MenuRapido() {
       contentContainerClassName="px-4"
     >
       {itens.map((item) => (
-        <Pressable key={item.nome} className="mr-4">
+        <Pressable key={item.nome} className="mr-4" onPress={() => router.push(item.rota as any)}>
           <VStack className="items-center">
             <Center className="w-[68px] h-[68px] rounded-full bg-white">
               <Icon as={item.icone} size="lg" className="text-[#820AD1]" />

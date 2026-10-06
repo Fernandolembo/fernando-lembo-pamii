@@ -5,11 +5,14 @@ import { Heading } from '@/components/ui/heading';
 import { Text } from '@/components/ui/text';
 import { Pressable } from '@/components/ui/pressable';
 import { Icon } from '@/components/ui/icon';
+import { useRouter } from 'expo-router';
 import { CreditCard, ChevronRight } from 'lucide-react-native';
 
 export function CartaoCredito() {
+  const router = useRouter();
+
   return (
-    <Pressable className="bg-white mx-4 mt-4 p-5 rounded-2xl">
+    <Pressable onPress={() => router.push('/cartoes')} className="bg-white mx-4 mt-4 p-5 rounded-2xl">
       <HStack className="justify-between items-center">
         <HStack className="gap-2 items-center">
           <Icon as={CreditCard} className="text-[#820AD1]" />

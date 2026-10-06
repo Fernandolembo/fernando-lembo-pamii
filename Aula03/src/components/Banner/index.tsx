@@ -4,11 +4,14 @@ import { Heading } from '@/components/ui/heading';
 import { Text } from '@/components/ui/text';
 import { Pressable } from '@/components/ui/pressable';
 import { Icon } from '@/components/ui/icon';
+import { useRouter } from 'expo-router';
 import { TrendingUp } from 'lucide-react-native';
 
 export function Banner() {
+  const router = useRouter();
+
   return (
-    <Pressable className="bg-[#2D0A4E] mx-4 mt-4 p-5 rounded-2xl">
+    <Pressable onPress={() => router.push('/beneficios')} className="bg-[#2D0A4E] mx-4 mt-4 p-5 rounded-2xl">
       <HStack className="items-center justify-between">
         <VStack className="flex-1 pr-3">
           <Text className="text-xs font-bold text-[#D9B3FF]">NOVIDADE</Text>
